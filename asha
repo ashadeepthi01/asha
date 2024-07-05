@@ -1,0 +1,12 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+# Load your transaction data into a DataFrame (assuming CSV format)
+df = pd.read_csv('transaction_data.csv')
+
+# Convert timestamps to datetime if needed
+df['timestamp'] = pd.to_datetime(df['timestamp'])
+
+# Standardize numerical features (e.g., amount) if necessary
+scaler = StandardScaler()
+df['amount_scaled'] = scaler.fit_transform(df[['amount']])
